@@ -1,6 +1,13 @@
 #include <iostream>
+#include "engine/Engine.h"
+#include "pch.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    EngineCore.init();
+
+    while(EngineCore.isRunning()){
+        EngineCore.update();
+    }
+
     return 0;
 }
