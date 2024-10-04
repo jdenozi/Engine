@@ -3,6 +3,9 @@
 #include <memory>
 #include "pch.h"
 
+const int WINDOW_WIDTH = 1200;
+const int WINDOW_HEIGHT = 720;
+
 class Engine {
 public:
     Engine(const Engine&)=delete;
@@ -29,11 +32,11 @@ public:
         return m_window;
     };
 
-    [[nodiscard]] inline float width() const {
+    [[nodiscard]] inline int width() const {
         return m_width;
     };
 
-    [[nodiscard]] inline float height() const {
+    [[nodiscard]] inline int height() const {
         return m_height;
     };
 
@@ -41,7 +44,7 @@ private:
     Engine();
     bool m_running{};
     std::shared_ptr<GLFWwindow> m_window{};
-    float m_width{}, m_height{};
+    int m_width{}, m_height{};
 
 };
 

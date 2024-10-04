@@ -17,8 +17,10 @@ add_executable(${PROJECT_NAME} main.cpp
         src/engine/Engine.cpp
         src/timer/Timer.h
         src/timer/Timer.cpp
+        src/events/Events.h
+        src/events/Events.cpp
+        src/events/Events.cpp
 )
-
 
 target_precompile_headers(${PROJECT_NAME}
         PRIVATE
