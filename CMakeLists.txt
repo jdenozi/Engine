@@ -12,10 +12,9 @@ include_directories(src)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/shaders DESTINATION ${CMAKE_BINARY_DIR})
 
-
-
 add_executable(${PROJECT_NAME} main.cpp
-        src/engine/Engine.h)
+        src/engine/Engine.h
+        src/engine/Engine.cpp)
 
 
 target_precompile_headers(${PROJECT_NAME}
@@ -27,3 +26,5 @@ target_link_libraries(${PROJECT_NAME} ${COMMON_LIBS})
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw glew glm)
 target_link_libraries(${PROJECT_NAME} ${COMMON_LIBS})
 
+# Create CPP variable
+target_compile_definitions(${PROJECT_NAME} PRIVATE PROJECT_NAME="${PROJECT_NAME} v${PROJECT_VERSION}")

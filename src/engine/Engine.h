@@ -16,7 +16,7 @@ public:
     static Engine &getInstance(){
         static Engine ref;
         return ref;
-    };
+};
 
     void exit();
 
@@ -28,8 +28,8 @@ public:
         return m_running;
     };
 
-    inline GLFWwindow &window() {
-        return *m_window;
+    inline std::shared_ptr<GLFWwindow> &window() {
+        return m_window;
     };
 
     [[nodiscard]] inline float width() const {
@@ -41,9 +41,9 @@ public:
     };
 
 private:
-    bool m_running;
-    GLFWwindow *m_window;
-    float m_width, m_height;
+    bool m_running{};
+    std::shared_ptr<GLFWwindow> m_window{};
+    float m_width{}, m_height{};
 
 };
 
