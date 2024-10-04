@@ -1,15 +1,13 @@
 #pragma once
 
-#include <GL/glew.h>
-#include <glfw3.h>
-#include <bits/fs_fwd.h>
-#include <filesystem>
+#include "pch.h"
 
 class Engine {
 public:
     Engine();
 
     Engine(const Engine&)=delete;
+    Engine&operator=(const Engine&) =delete;
 
     ~Engine();
 
