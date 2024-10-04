@@ -14,7 +14,10 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/shaders DESTINATION ${CMAKE_BINARY_DIR})
 
 add_executable(${PROJECT_NAME} main.cpp
         src/engine/Engine.h
-        src/engine/Engine.cpp)
+        src/engine/Engine.cpp
+        src/timer/Timer.h
+        src/timer/Timer.cpp
+)
 
 
 target_precompile_headers(${PROJECT_NAME}

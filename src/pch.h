@@ -1,8 +1,5 @@
-//
-// Created by juliend@innopsys.lan on 03/10/24.
-//
+#pragma once
 
-#ifndef GAMEENGINE_PCH_H
-#define GAMEENGINE_PCH_H
-
-#endif //GAMEENGINE_PCH_H
+#include <GL/glew.h>
+#include <glfw3.h>
+#include <bits/fs_fwd.h>

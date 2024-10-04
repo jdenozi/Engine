@@ -1,14 +1,13 @@
 #pragma once
 
+#include <memory>
 #include "pch.h"
 
 class Engine {
 public:
-    Engine();
-
     Engine(const Engine&)=delete;
-    Engine&operator=(const Engine&) =delete;
 
+    Engine&operator=(const Engine&) =delete;
     ~Engine();
 
     static Engine &getInstance(){
@@ -39,6 +38,7 @@ public:
     };
 
 private:
+    Engine();
     bool m_running{};
     std::shared_ptr<GLFWwindow> m_window{};
     float m_width{}, m_height{};
