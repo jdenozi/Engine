@@ -10,7 +10,10 @@ include(Dependencies.cmake)
 include_directories(libs/glfw)
 include_directories(src)
 
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/shaders DESTINATION ${CMAKE_BINARY_DIR})
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/shaders DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+file(MAKE_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/logs)
 
 add_executable(${PROJECT_NAME} main.cpp
         src/engine/Engine.h
@@ -20,6 +23,8 @@ add_executable(${PROJECT_NAME} main.cpp
         src/events/Events.h
         src/events/Events.cpp
         src/events/Events.cpp
+        src/utility/Logger.h
+        src/utility/Logger.cpp
 )
 
 target_precompile_headers(${PROJECT_NAME}
