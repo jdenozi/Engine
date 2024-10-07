@@ -9,3 +9,5 @@ namespace ecs{
 }
 
 class Component1: public ecs::Component{};
+
+class Component2: public ecs::Component{};

@@ -3,8 +3,15 @@
 #include "timer/Timer.h"
 #include "events/Events.h"
 #include "pch.h"
+#include "ecs/base/components/Component.h"
+#include "ecs/base/Types.h"
 
 int main() {
+
+    auto id1 = ecs::ComponentType<Component1>();
+    auto id2 = ecs::ComponentType<Component1>();
+    auto id3 = ecs::ComponentType<Component2>();
+
 
     EngineCore.init();
     PoolEvent.init();
