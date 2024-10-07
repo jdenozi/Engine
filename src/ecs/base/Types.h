@@ -23,31 +23,32 @@ namespace ecs {
     const size_t MAX_ENTITY_COUNT = 5000;
     const size_t MAX_COMPONENT_COUNT = 32;
 
-    using entityId = size_t;
-    using systemTypeId = size_t;
-    using componentTypeId = size_t;
-    using entitySignature = std::set<componentTypeId>;
+    using entityID = size_t;
+    using systemTypeID = size_t;
+    using componentTypeID = size_t;
+    using entitySignature = std::set<componentTypeID>;
 
-    inline static componentTypeId getRuntimeComponentTypeID() {
-        static componentTypeId typeID = 0u;
+    inline static componentTypeID getRuntimeComponentTypeID() {
+        static componentTypeID typeID = 0u;
+        LOG_DEBUG(fmt::format("ID debug= {:d}", typeID));
         return typeID++;
     }
 
-    inline static systemTypeId getRuntimeSystemTypeID() {
-        static systemTypeId typeID = 0u;
+    inline static systemTypeID getRuntimeSystemTypeID() {
+        static systemTypeID typeID = 0u;
         return typeID++;
     };
 
     template<typename T> requires IsComponent<T>
-    inline static componentTypeId ComponentType() noexcept {
-        static componentTypeId typeID = getRuntimeComponentTypeID();
+    inline static componentTypeID ComponentType() noexcept {
+        static componentTypeID typeID = getRuntimeComponentTypeID();
         LOG_DEBUG(fmt::format("ID= {:d}", typeID));
         return typeID;
     }
 
     template<typename T> requires IsSystem<T>
-    inline static componentTypeId SystemType() noexcept {
-        static componentTypeId typeID = getRuntimeSystemTypeID();
+    inline static componentTypeID SystemType() noexcept {
+        static componentTypeID typeID = getRuntimeSystemTypeID();
         LOG_DEBUG(fmt::format("ID= {:d}", typeID));
         return typeID;
     }

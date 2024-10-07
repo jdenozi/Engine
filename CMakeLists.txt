@@ -29,7 +29,8 @@ add_executable(${PROJECT_NAME} main.cpp
         src/utility/Logger.cpp
         src/ecs/ECS.h
         src/ecs/base/Types.h
-        src/ecs/base/components/Component.h
+        src/ecs/base/Component.h
+        src/ecs/base/System.h
 )
 
 target_compile_options(${PROJECT_NAME} PRIVATE -isystem /usr/lib/llvm-project/include/c++/v1/ -std=c++20 )
