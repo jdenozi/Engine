@@ -50,3 +50,11 @@ if(NOT GLM_POPULATED)
     add_subdirectory(${glm_SOURCE_DIR} ${glm_BINARY_DIR})
 endif()
 
+# Add fmt lib
+FetchContent_Declare(fmt
+        GIT_REPOSITORY https://github.com/fmtlib/fmt.git
+        GIT_TAG ${fmt_version}
+        EXCLUDE_FROM_ALL
+)
+FetchContent_MakeAvailable(fmt)
+
