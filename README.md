@@ -23,6 +23,9 @@ We're on an exciting journey to make Engine the go-to OpenGL engine. Here's what
 2. ### 🧩 **ECS (Entity-Component-System)**
     - ~~**Design** a robust ECS framework for flexibility and performance.~~
     - ~~**Implement** efficient entity management and component storage.~~
+   
+3. ### **Add Dear ImGUI**
+   - Adding ImGui using FetchContent CMake from master
 
 3. ### 📐 **Transform Component**
     - **Add** position, rotation, and scale functionalities.

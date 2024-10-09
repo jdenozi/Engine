@@ -45,16 +45,39 @@ FetchContent_Declare(
 FetchContent_GetProperties(GLM)
 if(NOT GLM_POPULATED)
     FetchContent_Populate(GLM)
-
-    # No need to adjust GLM options
     add_subdirectory(${glm_SOURCE_DIR} ${glm_BINARY_DIR})
 endif()
 
-# Add fmt lib
 FetchContent_Declare(fmt
         GIT_REPOSITORY https://github.com/fmtlib/fmt.git
-        GIT_TAG ${fmt_version}
+        GIT_TAG master
         EXCLUDE_FROM_ALL
 )
 FetchContent_MakeAvailable(fmt)
+
+FetchContent_Declare(imgui
+        GIT_REPOSITORY https://github.com/ocornut/imgui
+        GIT_TAG master
+        EXCLUDE_FROM_ALL
+)
+FetchContent_GetProperties(imgui)
+if(NOT imgui_POPULATED)
+    FetchContent_Populate(imgui)
+
+    file(GLOB IMGUI_SOURCES
+            "${imgui_SOURCE_DIR}/*.cpp"
+            "${imgui_SOURCE_DIR}/*.h"
+    )
+
+
+    add_library(imgui STATIC ${IMGUI_SOURCES})
+    target_include_directories(imgui PUBLIC ${imgui_SOURCE_DIR})
+
+    target_sources(imgui PRIVATE
+            ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
+            ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
+    )
+    target_include_directories(imgui PUBLIC ${imgui_SOURCE_DIR}/backends)
+endif()
+
 

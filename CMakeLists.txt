@@ -44,7 +44,7 @@ target_precompile_headers(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME} ${COMMON_LIBS})
-target_link_libraries(${PROJECT_NAME} PRIVATE glfw glew glm fmt::fmt-header-only)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw glew glm fmt::fmt-header-only imgui)
 target_link_libraries(${PROJECT_NAME} ${COMMON_LIBS})
 
 # Create CPP variable
