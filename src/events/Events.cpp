@@ -11,7 +11,6 @@ void Events::polls() {
 
 }
 
-
 void Events::init() {
     auto w = EngineCore.window();
     glfwSetWindowCloseCallback(w.get(), [](GLFWwindow *w){

@@ -4,9 +4,16 @@
 
 namespace ecs{
 
+    class ComponentArrayInterface{
+        ComponentArrayInterface() = default;
+        virtual ~ComponentArrayInterface() = default;;
+    public:
+        virtual void remove(const EntityID id){}
+    };
+
     template<typename T>
     requires IsComponent<T>
-    class ComponentArray{
+    class ComponentArray: public ComponentArrayInterface{
 
         void insert(const T& t){
             auto it = std::find_if(m_array.cbegin(), m_array.cend(), [&](const T& c){return c.getID() == t.getID();});
@@ -15,7 +22,7 @@ namespace ecs{
             }
         }
 
-        void remove(const T& t){
+        void remove(const T& t) override{
             auto it = std::find_if(m_array.cbegin(), m_array.cend(), [&](const T& c){return c.getID() == t.getID();});
             if(it!=m_array.cend()){
                 m_array.erase(it);

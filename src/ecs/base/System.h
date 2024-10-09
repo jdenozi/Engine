@@ -37,6 +37,9 @@ namespace ecs {
 
         virtual void destroy() {
         };
+
+        virtual void render() {
+        };
     private:
         std::vector<EntityID> m_entities;
         EntitySignature m_signature;

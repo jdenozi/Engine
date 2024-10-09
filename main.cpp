@@ -6,14 +6,9 @@
 #include "ecs/base/Component.h"
 #include "ecs/base/Types.h"
 #include "utility/Logger.h"
+#include "ecs/base/EntityManager.h"
 
 int main() {
-
-    auto id1 = ecs::ComponentType<Component1>();
-    auto id2 = ecs::ComponentType<Component1>();
-    auto id3 = ecs::ComponentType<Component2>();
-    auto  c = Component2();
-    LOG_INFO(fmt::format("result: {:d}", c.getID()));
 
     EngineCore.init();
     PoolEvent.init();
