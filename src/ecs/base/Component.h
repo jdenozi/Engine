@@ -7,10 +7,10 @@ namespace ecs{
         friend class Manager;
     public:
         Component() : m_entityID(){}
-        virtual ~Component(){};
-        inline const entityID getID() const{return m_entityID;}
+        virtual ~Component()= default;
+        inline const EntityID getID() const{return m_entityID;}
     private:
-        entityID m_entityID;
+        EntityID m_entityID;
     };
 }
 
