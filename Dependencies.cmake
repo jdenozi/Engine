@@ -71,7 +71,7 @@ if(NOT imgui_POPULATED)
 
 
     add_library(imgui STATIC ${IMGUI_SOURCES})
-    target_include_directories(imgui PUBLIC ${imgui_SOURCE_DIR})
+    target_include_directories(imgui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/libs/ ${imgui_SOURCE_DIR} )
 
     target_sources(imgui PRIVATE
             ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp

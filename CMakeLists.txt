@@ -9,7 +9,7 @@ project(
 set(CMAKE_CXX_STANDARD 20)
 
 include(Dependencies.cmake)
-include_directories(libs/glfw)
+include_directories(libs/GLFW)
 include_directories(src)
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
