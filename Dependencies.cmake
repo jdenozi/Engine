@@ -57,7 +57,7 @@ FetchContent_MakeAvailable(fmt)
 
 FetchContent_Declare(imgui
         GIT_REPOSITORY https://github.com/ocornut/imgui
-        GIT_TAG master
+        GIT_TAG docking
         EXCLUDE_FROM_ALL
 )
 FetchContent_GetProperties(imgui)
