@@ -4,6 +4,11 @@ Welcome to **Engine**,
 Another engine project with OpenGL, because I'm not very original. You'll find better engines elsewhere, but this one was made with heart.
 
  Built with modern C++20 and packed with awesome libraries like **glm**, **glad**, **glfw**, **egui**, and **fmt**.
+
+
+![engine.png](img/engine.png)
+
+
 ## 🚀 **Features**
 
 - **Modern C++20**: Leveraging the latest language features for performance and safety.

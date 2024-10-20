@@ -1,8 +1,11 @@
 #include "ImGuiManager.h"
 #include "imgui.h"
 #include "imgui_internal.h"
+#include "ecs/base/Cube.h"
 
 class LayoutManager {
+private:
+    Cube cube;
 public:
     void createLayout() {
         ImGuiViewport* viewport = ImGui::GetMainViewport();
@@ -69,7 +72,6 @@ public:
         ImGui::Text("Other Information");
         ImGui::BulletText("Screen Resolution: %dx%d", (int)ImGui::GetIO().DisplaySize.x, (int)ImGui::GetIO().DisplaySize.y);
         ImGui::BulletText("Time: %.2f", ImGui::GetTime());
-
         ImGui::End();
 
         // Right Column
@@ -85,7 +87,33 @@ public:
         // Center View
         ImGui::Begin("Center View");
         ImGui::Text("This is where your scene will be rendered");
-        // RENDER SCENE HERE
+        // Get the size of the ImGui window content region
+        ImVec2 windowSize = ImGui::GetContentRegionAvail();
+
+
+        // Create a texture to render the OpenGL scene
+        GLuint textureColorbuffer;
+        glGenTextures(1, &textureColorbuffer);
+        glBindTexture(GL_TEXTURE_2D, textureColorbuffer);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, windowSize.x, windowSize.y, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        // Create a framebuffer object
+        GLuint framebuffer;
+        glGenFramebuffers(1, &framebuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorbuffer, 0);
+
+        // Render the cube
+        cube.render(windowSize.x, windowSize.y);
+
+        // Unbind the framebuffer
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+        // Display the rendered texture in the ImGui window
+        ImGui::Image(ImTextureID((void*)(intptr_t)textureColorbuffer), windowSize, ImVec2(0, 1), ImVec2(1, 0));
+
         ImGui::End();
     }
 };
