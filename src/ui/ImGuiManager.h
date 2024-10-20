@@ -26,6 +26,7 @@ public:
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
         ImGuiIO &io = ImGui::GetIO();
+        io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;  // Enable docking
         (void) io;
 
         ImGui::StyleColorsDark();
@@ -37,6 +38,7 @@ public:
             throw std::runtime_error("Failed to initialize ImGui OpenGL3 implementation");
         }
 
+        layoutManager = std::make_unique<LayoutManager>();
         initialized = true;
         return true;
     }
