@@ -36,6 +36,7 @@ add_executable(${PROJECT_NAME} main.cpp
         src/ecs/base/EntityManager.h
         src/ui/ImGuiManager.h
         src/ui/Layout.h
+        src/ui/Style.h
 )
 
 target_compile_options(${PROJECT_NAME} PRIVATE -isystem /usr/lib/llvm-project/include/c++/v1/ -std=c++20 )

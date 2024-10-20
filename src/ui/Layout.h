@@ -48,18 +48,41 @@ public:
     }
 
     void renderPanels() {
+        // Left Column
         ImGui::Begin("Left Column");
-        ImGui::Text("This is the left column");
+
+        // Camera position
+        static float cameraPos[3] = {0.0f, 0.0f, 0.0f};
+        ImGui::Text("Camera Position");
+        ImGui::SliderFloat("X", &cameraPos[0], -10.0f, 10.0f);
+        ImGui::SliderFloat("Y", &cameraPos[1], -10.0f, 10.0f);
+        ImGui::SliderFloat("Z", &cameraPos[2], -10.0f, 10.0f);
+
+        // Number of objects
+        static int numObjects = 0;
+        ImGui::InputInt("Number of Objects", &numObjects);
+
+        // FPS display
+        ImGui::Text("FPS: %.1f", ImGui::GetIO().Framerate);
+
+        // Other information
+        ImGui::Text("Other Information");
+        ImGui::BulletText("Screen Resolution: %dx%d", (int)ImGui::GetIO().DisplaySize.x, (int)ImGui::GetIO().DisplaySize.y);
+        ImGui::BulletText("Time: %.2f", ImGui::GetTime());
+
         ImGui::End();
 
+        // Right Column
         ImGui::Begin("Right Column");
         ImGui::Text("This is the right column");
         ImGui::End();
 
+        // Bottom Panel
         ImGui::Begin("Bottom Panel");
         ImGui::Text("This is the bottom panel");
         ImGui::End();
 
+        // Center View
         ImGui::Begin("Center View");
         ImGui::Text("This is where your scene will be rendered");
         // RENDER SCENE HERE
