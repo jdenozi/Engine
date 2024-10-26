@@ -1,7 +1,7 @@
-#include "ImGuiManager.h"
 #include "imgui.h"
 #include "imgui_internal.h"
 #include "ecs/base/Cube.h"
+
 
 class LayoutManager {
 private:
@@ -54,12 +54,28 @@ public:
         // Left Column
         ImGui::Begin("Left Column");
 
-        // Camera position
-        static float cameraPos[3] = {0.0f, 0.0f, 0.0f};
         ImGui::Text("Camera Position");
-        ImGui::SliderFloat("X", &cameraPos[0], -10.0f, 10.0f);
-        ImGui::SliderFloat("Y", &cameraPos[1], -10.0f, 10.0f);
-        ImGui::SliderFloat("Z", &cameraPos[2], -10.0f, 10.0f);
+        ImGui::SliderFloat("Camera X", &cube.position.x, -100.0f, 100.0f);
+        ImGui::SliderFloat("Camera Y", &cube.position.y, -100.0f, 100.0f);
+        ImGui::SliderFloat("Camera Z", &cube.position.z, -100.0f, 100.0f);
+
+        // Add Rotation controls
+        ImGui::Separator();
+        // Store old values
+        float oldX = cube.rotation.x;
+        float oldY = cube.rotation.y;
+        float oldZ = cube.rotation.z;
+
+        // Rotation controls
+        ImGui::Text("Cube Rotation Axis");
+        ImGui::SliderFloat("Rotation X", &cube.rotation.x, -1.0f, 1.0f);
+        ImGui::SliderFloat("Rotation Y", &cube.rotation.y, -1.0f, 1.0f);
+        ImGui::SliderFloat("Rotation Z", &cube.rotation.z, -1.0f, 1.0f);
+
+        // If any value changed, apply the rotation
+        if (oldX != cube.rotation.x || oldY != cube.rotation.y || oldZ != cube.rotation.z) {
+            cube.applyRotation();
+        }
 
         // Number of objects
         static int numObjects = 0;
