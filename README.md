@@ -1,85 +1,97 @@
-# 🎮 **Engine: OpenGL Engine with a Dash of Egui!** 🎨
+# QtOpenGLEngine
 
-Welcome to **Engine**,
-Another engine project with OpenGL, because I'm not very original. You'll find better engines elsewhere, but this one was made with heart.
+A simple 3D rendering engine built with Qt and OpenGL, demonstrating basic graphics programming concepts including camera controls, shader management, and 3D object rendering.
 
- Built with modern C++20 and packed with awesome libraries like **glm**, **glad**, **glfw**, **egui**, and **fmt**.
+## Features
 
+- Modern OpenGL (3.3+) rendering pipeline
+- Camera system with mouse and keyboard controls
+- Shader-based rendering
+- Basic 3D primitive rendering (cubes)
+- Resource management system for shaders and styles
 
-![engine.png](img/engine.png)
+## Prerequisites
 
+- Qt 6.x
+- CMake 3.16 or higher
+- C++17 compatible compiler
+- OpenGL 3.3+ compatible graphics card
 
-## 🚀 **Features**
+## Project Structure
 
-- **Modern C++20**: Leveraging the latest language features for performance and safety.
-- **ECS Architecture**: Flexible and efficient Entity-Component-System design.
-- **Components**: Transform, Mesh, Camera, and more!
-- **Interactive GUI**: Thanks to **egui**, creating interfaces is a breeze.
-- **Robust Libraries**: Utilizing **glm** for math, **glad** & **glfw** for OpenGL, and **fmt** for formatting.
+```
+QtOpenGLEngine/
+├── CMakeLists.txt
+├── resources.qrc
+├── src/
+│   ├── main.cpp
+│   ├── renderer/
+│   └── ui/
+├── shaders/
+└── style/
+```
 
-## 📅 **Roadmap**
+## Building
 
-We're on an exciting journey to make Engine the go-to OpenGL engine. Here's what's on the horizon:
+1. Clone the repository
+2. Create a build directory:
+```bash
+mkdir build && cd build
+```
+3. Configure with CMake:
+```bash
+cmake ..
+```
+4. Build the project:
+```bash
+cmake --build .
+```
 
-1. ### 🛠 ~~**Setup**~~
-    - ~~**Initialize** the engine with all necessary configurations.~~
-    - ~~**Integrate** essential libraries: glm, glad, glfw, egui, and fmt.~~
+## Controls
 
-2. ### 🧩 **ECS (Entity-Component-System)**
-    - ~~**Design** a robust ECS framework for flexibility and performance.~~
-    - ~~**Implement** efficient entity management and component storage.~~
-   
-3. ### **Add Dear ImGUI**
-   - Adding ImGui using FetchContent CMake from master
+- **Mouse Right Button + Drag**: Rotate the camera view
+- **Keyboard Controls**:
+   - Z: Move forward
+   - S: Move backward
+   - Q: Move left
+   - D: Move right
+   - A: Move up
+   - E: Move down
+- **Mouse Wheel**: Zoom in/out
 
-3. ### 📐 **Transform Component**
-    - **Add** position, rotation, and scale functionalities.
-    - **Enable** hierarchical transformations for complex objects.
+## Architecture
 
-4. ### 🖼 **Mesh Component**
-    - **Support** for various mesh formats.
-    - **Optimize** mesh data for real-time rendering.
+### Core Components
 
-5. ### 🎥 **Camera Component**
-    - **Implement** perspective and orthographic cameras.
-    - **Add** camera controls for smooth navigation.
+- **Renderer**: Main OpenGL widget handling the rendering pipeline
+- **Camera**: Manages view transformations and user input for navigation
+- **RendererObject**: Base class for all renderable objects
+- **Cube**: Example implementation of a renderable object
 
-6. ### 🌍 **Scene**
-    - **Create** scene management for organizing entities.
-    - **Enable** loading and unloading of scenes dynamically.
+### Shader System
 
-7. ### ✏️ **Gizmo**
-    - **Integrate** interactive gizmos for object manipulation.
-    - **Support** translation, rotation, and scaling tools.
+The engine uses two main shaders:
+- **Vertex Shader**: Handles vertex transformations and attribute passing
+- **Fragment Shader**: Manages color output and pixel processing
 
-8. ### 📦 **Mesh Loader**
-    - **Develop** loaders for popular mesh formats (e.g., OBJ, FBX).
-    - **Ensure** efficient parsing and error handling.
+## Contributing
 
-9. ### 🔄 **Event System**
-    - **Build** a robust event dispatcher.
-    - **Facilitate** communication between different engine systems.
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Submit a pull request
 
-10. ### 💡 **Lighting**
-    - **Implement** various light types: directional, point, and spotlights.
-    - **Add** support for multiple light sources and dynamic lighting.
+## Future Improvements
 
-11. ### 🕶 **Shadow**
-    - **Develop** shadow mapping techniques.
-    - **Optimize** shadows for performance and quality.
+- [ ] Add texture support
+- [ ] Implement lighting system
+- [ ] Add more primitive shapes
+- [ ] Support for model loading
+- [ ] Implement a scene graph
+- [ ] Add material system
+- [ ] Implement shadow mapping
 
-## 🛠 **Getting Started**
+## License
 
-### 🖥 **Prerequisites**
-
-- **C++20** compatible compiler (e.g., GCC, Clang, MSVC)
-- **CMake** for building the project
-- **Git** for version control
-
-### 📦 **Installation**
-
-1. **Clone the Repository**
-
-   ```bash
-   git clone https://github.com/yourusername/Engine.git
-   cd Engine
+This project is open-source, feel free to use it as you wish.
