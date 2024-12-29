@@ -1,55 +1,66 @@
-cmake_minimum_required(VERSION 3.28)
-project(
-        GameEngine
-        VERSION 0.0.1
-        DESCRIPTION "OpenGL + EGUI Game Engine (not very original I know)"
-        LANGUAGES CXX
+cmake_minimum_required(VERSION 3.16)
+project(QtOpenGLEngine VERSION 0.1 LANGUAGES CXX)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Find Qt packages
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets OpenGL)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGL)
+
+if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    find_package(Qt6 REQUIRED COMPONENTS OpenGLWidgets)
+endif()
+
+# Add subdirectories and set include directories
+add_subdirectory(src/renderer)
+add_subdirectory(src/ui)
+
+# Set the target sources
+set(PROJECT_SOURCES
+    src/main.cpp
+    resources.qrc
 )
 
-set(CMAKE_CXX_STANDARD 20)
+# Create executable
+if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    qt_add_executable(QtOpenGLEngine
+        ${PROJECT_SOURCES}
+    )
+else()
+    add_executable(QtOpenGLEngine
+        ${PROJECT_SOURCES}
+    )
+endif()
 
-include(Dependencies.cmake)
-include_directories(libs/GLFW)
-include_directories(src)
-
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/shaders DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
-file(MAKE_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/logs)
-
-add_executable(${PROJECT_NAME} main.cpp
-        src/engine/Engine.h
-        src/engine/Engine.cpp
-        src/timer/Timer.h
-        src/timer/Timer.cpp
-        src/events/Events.h
-        src/events/Events.cpp
-        src/events/Events.cpp
-        src/utility/Logger.h
-        src/utility/Logger.cpp
-        src/ecs/ECS.h
-        src/ecs/base/Types.h
-        src/ecs/base/Component.h
-        src/ecs/base/System.h
-        src/ecs/base/System.h
-        src/ecs/base/ComponentArray.h
-        src/ecs/base/EntityManager.h
-        src/ui/ImGuiManager.h
-        src/ui/Layout.h
-        src/ui/Style.h
-        src/ecs/base/Cube.h
+# Include directories for the main executable
+target_include_directories(QtOpenGLEngine PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/renderer
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/ui
 )
 
-target_compile_options(${PROJECT_NAME} PRIVATE -isystem /usr/lib/llvm-project/include/c++/v1/ -std=c++20 )
+# Link libraries
+if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    target_link_libraries(QtOpenGLEngine PRIVATE
+        Qt::Widgets
+        Qt::OpenGL
+        Qt::OpenGLWidgets
+        renderer
+        ui
+    )
+else()
+    target_link_libraries(QtOpenGLEngine PRIVATE
+        Qt::Widgets
+        Qt::OpenGL
+        renderer
+        ui
+    )
+endif()
 
-target_precompile_headers(${PROJECT_NAME}
-        PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/pch.h
-)
-
-target_link_libraries(${PROJECT_NAME} ${COMMON_LIBS})
-target_link_libraries(${PROJECT_NAME} PRIVATE glfw glew glm fmt::fmt-header-only imgui)
-target_link_libraries(${PROJECT_NAME} ${COMMON_LIBS})
-
-# Create CPP variable
-target_compile_definitions(${PROJECT_NAME} PRIVATE PROJECT_NAME="${PROJECT_NAME} v${PROJECT_VERSION}")
+if(QT_VERSION_MAJOR EQUAL 6)
+    qt_finalize_executable(QtOpenGLEngine)
+endif()

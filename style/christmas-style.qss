@@ -1,0 +1,140 @@
+/* christmas-style.qss */
+
+/* Colors Theme Christmas
+Primary: #2F4538 (Vert sapin foncé)
+PrimaryLight: #3B5645
+PrimaryDark: #1A2E23
+Accent: #C41E3A (Rouge Noël)
+AccentLight: #DC143C
+Highlight: #FFD700 (Or)
+Border: #4F7942
+TextPrimary: #FFFFFF
+TextSecondary: #E8E8E8
+*/
+
+/* Main Window */
+QMainWindow {
+    background: #1A2E23;  /* Vert sapin très foncé */
+}
+
+QMainWindow::separator {
+    background: #4F7942;
+    width: 1px;
+    height: 1px;
+}
+
+QMainWindow::separator:hover {
+    background: #C41E3A;
+}
+
+/* Dock Widgets */
+QDockWidget {
+    border: 1px solid #4F7942;
+}
+
+QDockWidget::title {
+    background: #2F4538;
+    padding-left: 5px;
+    padding-top: 2px;
+    color: #FFD700;  /* Titre en or */
+}
+
+QDockWidget::close-button, 
+QDockWidget::float-button {
+    border: none;
+    padding: 0px;
+    background: #2F4538;
+}
+
+QDockWidget::close-button:hover, 
+QDockWidget::float-button:hover {
+    background: #3B5645;
+}
+
+/* Toolbar */
+QToolBar {
+    background: #2F4538;
+    border: 1px solid #4F7942;
+    padding: 2px;
+    spacing: 3px;
+}
+
+QToolBar::separator {
+    background: #4F7942;
+    width: 1px;
+    margin: 4px 8px;
+}
+
+QToolButton {
+    color: #FFD700;  /* Boutons dorés */
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+QToolButton:hover {
+    background: #3B5645;
+    border: 1px solid #C41E3A;
+}
+
+QToolButton:pressed {
+    background: #C41E3A;
+    color: #FFFFFF;
+}
+
+/* Buttons */
+QPushButton {
+    background-color: #2F4538;
+    border: 1px solid #4F7942;
+    border-radius: 3px;
+    color: #FFD700;  /* Texte doré */
+    padding: 5px 15px;
+    min-height: 20px;
+}
+
+QPushButton:hover {
+    background-color: #3B5645;
+    border: 1px solid #C41E3A;
+}
+
+QPushButton:pressed {
+    background-color: #C41E3A;
+    color: #FFFFFF;
+}
+
+QPushButton:disabled {
+    background-color: #1A2E23;
+    border: 1px solid #2F4538;
+    color: #4F7942;
+}
+
+/* Status Bar */
+QStatusBar {
+    background: #2F4538;
+    color: #FFD700;  /* Status en doré */
+}
+
+QStatusBar::item {
+    border: none;
+}
+
+/* Menus */
+QMenuBar {
+    background-color: #2F4538;
+    color: #FFD700;
+}
+
+QMenuBar::item:selected {
+    background-color: #3B5645;
+}
+
+QMenu {
+    background-color: #2F4538;
+    color: #FFD700;
+    border: 1px solid #4F7942;
+}
+
+QMenu::item:selected {
+    background-color: #3B5645;
+}

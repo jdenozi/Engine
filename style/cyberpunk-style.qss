@@ -1,0 +1,186 @@
+/* cyberpunk-style.qss */
+
+/* Colors Theme Cyberpunk
+Primary: #0D0221 (Noir profond)
+PrimaryLight: #180A33
+PrimaryDark: #060111
+Accent: #FF00FF (Rose néon)
+Secondary: #00FFFF (Cyan néon)
+Highlight: #BF00FF (Violet néon)
+Glow: #9D4EDD (Violet plus doux)
+Border: #FF00FF
+TextPrimary: #FFFFFF
+*/
+
+/* Main Window */
+QMainWindow {
+    background: #0D0221;
+    border: 1px solid #FF00FF;
+}
+
+QMainWindow::separator {
+    background: #FF00FF;
+    width: 2px;
+    height: 2px;
+}
+
+QMainWindow::separator:hover {
+    background: #00FFFF;
+}
+
+/* Dock Widgets */
+QDockWidget {
+    background: #180A33;
+    border: 1px solid #FF00FF;
+    color: #FFFFFF;
+}
+
+QDockWidget::title {
+    background: #180A33;
+    padding: 3px;
+    border-bottom: 2px solid #FF00FF;
+    color: #00FFFF;
+}
+
+QDockWidget::close-button, 
+QDockWidget::float-button {
+    background: #180A33;
+    border: 1px solid #FF00FF;
+}
+
+QDockWidget::close-button:hover, 
+QDockWidget::float-button:hover {
+    background: #FF00FF;
+}
+
+/* Toolbar */
+QToolBar {
+    background: #180A33;
+    border-bottom: 2px solid #FF00FF;
+    padding: 5px;
+    spacing: 5px;
+}
+
+QToolBar::separator {
+    background: #FF00FF;
+    width: 2px;
+    margin: 4px 8px;
+}
+
+QToolButton {
+    color: #00FFFF;
+    background: #180A33;
+    border: 1px solid #FF00FF;
+    border-radius: 3px;
+    padding: 5px;
+    min-width: 60px;
+}
+
+QToolButton:hover {
+    background: #9D4EDD;
+    color: #FFFFFF;
+    border: 1px solid #00FFFF;
+}
+
+QToolButton:pressed {
+    background: #FF00FF;
+    color: #FFFFFF;
+}
+
+/* ComboBox (for style selector) */
+QComboBox {
+    background: #180A33;
+    border: 1px solid #FF00FF;
+    border-radius: 3px;
+    color: #00FFFF;
+    padding: 5px;
+    min-width: 100px;
+}
+
+QComboBox:hover {
+    border: 1px solid #00FFFF;
+}
+
+QComboBox::drop-down {
+    border: none;
+    background: #FF00FF;
+    width: 20px;
+}
+
+QComboBox::drop-down:hover {
+    background: #00FFFF;
+}
+
+QComboBox QAbstractItemView {
+    background: #180A33;
+    border: 1px solid #FF00FF;
+    color: #00FFFF;
+    selection-background-color: #9D4EDD;
+    selection-color: #FFFFFF;
+}
+
+/* Buttons */
+QPushButton {
+    background-color: #180A33;
+    border: 1px solid #FF00FF;
+    border-radius: 3px;
+    color: #00FFFF;
+    padding: 8px 15px;
+    min-height: 20px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #9D4EDD;
+    border: 1px solid #00FFFF;
+    color: #FFFFFF;
+}
+
+QPushButton:pressed {
+    background-color: #FF00FF;
+    color: #FFFFFF;
+}
+
+QPushButton:disabled {
+    background-color: #060111;
+    border: 1px solid #9D4EDD;
+    color: #666666;
+}
+
+/* Status Bar */
+QStatusBar {
+    background: #180A33;
+    color: #00FFFF;
+    border-top: 2px solid #FF00FF;
+}
+
+QStatusBar::item {
+    border: none;
+}
+
+/* Labels */
+QLabel {
+    color: #FFFFFF;
+}
+
+/* Menu */
+QMenuBar {
+    background-color: #180A33;
+    color: #00FFFF;
+    border-bottom: 2px solid #FF00FF;
+}
+
+QMenuBar::item:selected {
+    background: #9D4EDD;
+}
+
+QMenu {
+    background-color: #180A33;
+    border: 1px solid #FF00FF;
+    color: #00FFFF;
+}
+
+QMenu::item:selected {
+    background: #9D4EDD;
+    color: #FFFFFF;
+}

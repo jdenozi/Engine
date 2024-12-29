@@ -1,74 +1,82 @@
-# General C++ ignore rules
+# This file is used to ignore files which are generated
+# ----------------------------------------------------------------------------
+
+*~
+*.autosave
+*.a
+*.core
+*.moc
 *.o
 *.obj
-*.exe
-*.out
-*.a
+*.orig
+*.rej
 *.so
-*.lib
-*.dll
-*.dylib
-*.pdb
-*.ilk
-*.idb
-*.exp
-*.ipch
-*.iobj
-*.pch
-*.class
-bin*
-
-# CMake build directories
-build/
-cmake-build-*/
-
-CMakeLists.txt.user*
-*.config
-*.creator
-*.ini
-*.qmlproject
-*.pro
-*.pro.user
-*.pro.shared
-*.qmake.cache
-*.qmake.stash
-
-# Visual Studio Code
-.vscode/
-
-# CLion
-.idea/
-*.iml
-
-# macOS
+*.so.*
+*_pch.h.cpp
+*_resource.rc
+*.qm
+.#*
+*.*#
+core
+!core/
+tags
 .DS_Store
-*.swp
-*.swo
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
+.directory
+*.debug
+Makefile*
+*.prl
 *.app
-*.i*86
-*.x86_64
-*.hex
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+Thumbs.db
+*.res
+*.rc
+/.qmake.cache
+/.qmake.stash
+
+# qtcreator generated files
+*.pro.user*
+*.qbs.user*
+CMakeLists.txt.user*
+
+# xemacs temporary files
+*.flc
+
+# Vim temporary files
+.*.swp
+
+# Visual Studio generated files
+*.ib_pdb_index
+*.idb
+*.ilk
+*.pdb
+*.sln
+*.suo
+*.vcproj
+*vcproj.*.*.user
+*.ncb
+*.sdf
+*.opensdf
+*.vcxproj
+*vcxproj.*
+
+# MinGW generated files
+*.Debug
+*.Release
+
+# Python byte code
+*.pyc
+
+# Binaries
+# --------
+*.dll
+*.exe
+
+# Directories with generated files
+.moc/
+.obj/
+.pch/
+.rcc/
+.uic/
+/build*/

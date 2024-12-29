@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>style/default-style.qss</file>
+        <file>style/christmas-style.qss</file>
+        <file>style/cyberpunk-style.qss</file>
+        <file>shaders/cube.vert</file>
+        <file>shaders/cube.frag</file>
+    </qresource>
+</RCC>
