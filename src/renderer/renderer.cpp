@@ -94,27 +94,17 @@ void Renderer::resizeGL(int width, int height)
 
 void Renderer::keyPressEvent(QKeyEvent *event)
 {
-    // switch (event->key()) {
-    // case Qt::Key_Z: camera.moveForward = true; break;
-    // case Qt::Key_S: camera.moveBackward = true; break;
-    // case Qt::Key_Q: camera.moveLeft = true; break;
-    // case Qt::Key_D: camera.moveRight = true; break;
-    // case Qt::Key_A: camera.moveUp = true; break;
-    // case Qt::Key_E: camera.moveDown = true; break;
-    //}
+     switch (event->key()) {
+    case Qt::Key_Z: camera.moveForward(1.0f); break;
+    case Qt::Key_S: camera.moveBackward(1.0f); break;
+    case Qt::Key_Q: camera.moveLeft(1.0f); break;
+    case Qt::Key_D: camera.moveRight(1.0f); break;
+    case Qt::Key_A: camera.moveUp(1.0f); break;
+    case Qt::Key_E: camera.moveDown(1.0f); break;
+    }
 }
 
-void Renderer::keyReleaseEvent(QKeyEvent *event)
-{
-    // switch (event->key()) {
-    // case Qt::Key_Z: camera.moveForward = false; break;
-    // case Qt::Key_S: camera.moveBackward = false; break;
-    // case Qt::Key_Q: camera.moveLeft = false; break;
-    // case Qt::Key_D: camera.moveRight = false; break;
-    // case Qt::Key_A: camera.moveUp = false; break;
-    // case Qt::Key_E: camera.moveDown = false; break;
-    //}
-}
+
 void Renderer::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::RightButton) {

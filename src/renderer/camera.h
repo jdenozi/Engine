@@ -2,19 +2,19 @@
 #include <QMatrix4x4>
 
 class Camera {
-private:
+public:
     QVector3D position;
     QVector3D front;
     QVector3D up;
     QVector3D right;
     QVector3D worldUp;
 
-    // Angles d'Euler
+    // Euler angles
     float yaw;
     float pitch;
-    float roll;  // Si vous voulez aussi la rotation sur Z
+    float roll;
 
-    // Options de caméra
+    // Camera options
     float movementSpeed;
     float mouseSensitivity;
     float zoom;
@@ -38,8 +38,10 @@ public:
         view.lookAt(position, position + front, up);
         view.rotate(yaw, QVector3D(0.0f, 1.0f, 0.0f));   // Rotation Y
         view.rotate(pitch, QVector3D(1.0f, 0.0f, 0.0f)); // Rotation X
+
         return view;
     }
+
 
     void processMouseMovement(float xoffset, float yoffset, bool constrainPitch = true) {
         xoffset *= mouseSensitivity;
@@ -48,7 +50,7 @@ public:
         yaw   += xoffset;
         pitch += yoffset;
 
-        // Contraindre le pitch pour éviter le retournement de la caméra
+        // Avoid pitch for upside down camera
         if (constrainPitch) {
             if (pitch > 89.0f)
                 pitch = 89.0f;
@@ -59,16 +61,43 @@ public:
         updateCameraVectors();
     }
 
+    void moveBackward(float deltaTime) {
+        position -= front * deltaTime * 0.1;
+    }
+
+    void moveForward(float deltaTime) {
+        position -= -front * deltaTime * 0.1;
+    }
+
+    void moveRight(float deltaTime) {
+        position -= right * deltaTime * 0.1;
+    }
+
+    void moveUp(float deltaTime) {
+        position -= up * deltaTime * 0.1;
+    }
+
+
+    void moveDown(float deltaTime) {
+        position -= -up * deltaTime * 0.1;
+    }
+
+
+    void moveLeft(float deltaTime) {
+        position -= -right * deltaTime * 0.1;
+    }
+
+
 private:
     void updateCameraVectors() {
-        // Calculer le nouveau vecteur front
+        // COmpute new front vector
         QVector3D front;
         front.setX(cos(qDegreesToRadians(yaw)) * cos(qDegreesToRadians(pitch)));
         front.setY(sin(qDegreesToRadians(pitch)));
         front.setZ(sin(qDegreesToRadians(yaw)) * cos(qDegreesToRadians(pitch)));
         this->front = front.normalized();
 
-        // Recalculer les vecteurs right et up
+        // Comput eup and down vector
         right = QVector3D::crossProduct(this->front, worldUp).normalized();
         up = QVector3D::crossProduct(right, this->front).normalized();
     }

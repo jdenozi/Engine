@@ -10,7 +10,7 @@ add_library(renderer STATIC
     ${RENDERER_SOURCES}
     ${RENDERER_HEADERS}
     camera.h
-    camera.cpp
+
     rendererobject.h
     cube.h
 )
