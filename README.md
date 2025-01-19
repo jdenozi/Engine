@@ -17,6 +17,11 @@ A simple 3D rendering engine built with Qt and OpenGL, demonstrating basic graph
 - C++17 compatible compiler
 - OpenGL 3.3+ compatible graphics card
 
+### Environment variable needed
+**Qt6_DIR**=/{}/Qt/6.8.1/gcc_64/lib/cmake/Qt6;
+**QT_DIR**=/{}/Qt/6.8.1/gcc_64/lib/cmake/Qt6;
+**CMAKE_PREFIX_PATH**=/{}/Qt/6.8.1/gcc_64
+
 ## Project Structure
 
 ```
