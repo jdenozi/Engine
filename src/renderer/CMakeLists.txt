@@ -4,6 +4,7 @@ set(RENDERER_SOURCES
 
 set(RENDERER_HEADERS
     renderer.h
+        plane.h
 )
 
 add_library(renderer STATIC
@@ -12,7 +13,8 @@ add_library(renderer STATIC
     camera.h
 
     rendererobject.h
-    cube.h
+    genericcube.h
+        plane.h
 )
 
 target_include_directories(renderer PUBLIC

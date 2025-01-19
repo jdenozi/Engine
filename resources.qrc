@@ -5,5 +5,12 @@
         <file>style/cyberpunk-style.qss</file>
         <file>shaders/cube.vert</file>
         <file>shaders/cube.frag</file>
+        <file>assets/textures/knit_tex.jpg</file>
+        <file>assets/textures/arid-cliff_tex.jpg</file>
+        <file>assets/textures/cliff_tex.jpg</file>
+        <file>assets/textures/sky_tex.jpg</file>
+        <file>assets/textures/ground_sand_tex.jpg</file>
+
+
     </qresource>
 </RCC>

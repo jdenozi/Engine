@@ -10,8 +10,8 @@ public:
     QVector3D worldUp;
 
     // Euler angles
-    float yaw;
-    float pitch;
+    float yaw; // psi autout de l'axe Y
+    float pitch; // theta autour de laxe
     float roll;
 
     // Camera options
@@ -36,8 +36,6 @@ public:
     QMatrix4x4 getViewMatrix() {
         QMatrix4x4 view;
         view.lookAt(position, position + front, up);
-        view.rotate(yaw, QVector3D(0.0f, 1.0f, 0.0f));   // Rotation Y
-        view.rotate(pitch, QVector3D(1.0f, 0.0f, 0.0f)); // Rotation X
 
         return view;
     }
@@ -70,7 +68,7 @@ public:
     }
 
     void moveRight(float deltaTime) {
-        position -= right * deltaTime * 0.1;
+        position -= -right * deltaTime * 0.1;
     }
 
     void moveUp(float deltaTime) {
@@ -84,7 +82,7 @@ public:
 
 
     void moveLeft(float deltaTime) {
-        position -= -right * deltaTime * 0.1;
+        position -= right * deltaTime * 0.1;
     }
 
 

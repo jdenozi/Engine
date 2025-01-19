@@ -3,12 +3,12 @@
 #include <QOpenGLBuffer>
 #include <QOpenGLVertexArrayObject>
 #include <QOpenGLShaderProgram>
+#include "QOpenGLTexture"
 
 class RendererObject {
 public:
     virtual ~RendererObject() = default;
 
-    // Déclarez explicitement les fonctions virtuelles
     virtual void init(QOpenGLShaderProgram* shaderProgram) = 0;
     virtual void render(QOpenGLShaderProgram* shaderProgram) = 0;
     virtual void cleanup() = 0;
